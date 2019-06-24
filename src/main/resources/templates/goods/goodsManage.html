@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="/css/formSelects-v4.css"/>
+<head th:include="layout :: htmlhead" th:with="title='角色管理'"></head>
+<script type="text/javascript" src="/js/dateUtils.js"></script>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!--头-->
+    <div th:replace="fragments/head :: header"></div>
+
+
+    <div class="layui-body" style="margin: 1%">
+        <div class="layui-form-item">
+            <label class="layui-form-label">明星名</label>
+            <div class="layui-input-inline">
+                <input type="text"  lay-verify="" id="searchStartName" class="layui-input"/>
+            </div>
+            <label class="layui-form-label">类型</label>
+            <div class="layui-input-inline">
+                <select id="type" style="width: 120px;height: 38px">
+                    <option value="">全部</option>
+                    <option value="1">手机壳</option>
+                    <option value="2">台历</option>
+                    <option value="3">相册</option>
+                    <option value="4">装饰画</option>
+                    <option value="5">抱枕</option>
+                    <option value="6">海报</option>
+                    <option value="7">相框</option>
+                    <option value="8">T恤</option>
+                    <option value="9">卫衣</option>
+                    <option value="10">帆布袋</option>
+                </select>
+            </div>
+            <label class="layui-form-label"> 是否刷单</label>
+            <div class="layui-input-inline">
+                <select id="haveBrushSingle" style="width: 120px;height: 38px">
+                    <option value="">全部</option>
+                    <option value="1">是</option>
+                    <option value="2">否</option>
+                </select>
+            </div>
+            <label class="layui-form-label" style="width: 150px"> 详情是否优化</label>
+            <div class="layui-input-inline">
+                <select id="detailsOptimization" style="width: 120px;height: 38px">
+                    <option value="">全部</option>
+                    <option value="1">是</option>
+                    <option value="2">否</option>
+                </select>
+            </div>
+            <label class="layui-form-label">排序</label>
+            <div class="layui-input-inline">
+                <input type="radio" name="sort" value="0" checked>默认
+                <input type="radio" name="sort" value="1">按订搜索次数
+                <input type="radio" name="sort" value="2">按订评价次数
+                <input type="radio" name="sort" value="3">按有图评价次数
+                <input type="radio" name="sort" value="4">销量
+                <input type="radio" name="sort" value="5">刷单数量
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="margin-left: 10px;">
+                <button class="layui-btn" onclick="search()">搜索</button>
+                <button  class="layui-btn" onclick="reset()" >重置</button>
+                <button class="layui-btn layui-btn-normal" onclick="add()">新增</button>
+            </div>
+        </div>
+
+
+        <table id="goodsList" lay-filter="goodsTable"></table>
+        <script type="text/html" id="optBar">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+    </div>
+
+    <!--添加或编辑-->
+    <div id="setGoods" class="layer_self_wrap" style="width:1000px;display:none;">
+        <form id="goodsForm" class="layui-form layui-form-pane" method="post" action="" style="margin-top: 20px;">
+            <input id="id" type="hidden" name="id"/>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">明星名称</label>
+                <div class="layui-input-inline">
+                    <input id="startName" name="startName" lay-verify="required" autocomplete="off" class="layui-input"
+                           type="text"/>
+                </div>
+                <label class="layui-form-label">类型</label>
+                <div class="layui-input-inline">
+                    <select name="type"  id="type2">
+                        <option value="0">全部</option>
+                        <option value="1">手机壳</option>
+                        <option value="2">台历</option>
+                        <option value="3">相册</option>
+                        <option value="4">装饰画</option>
+                        <option value="5">抱枕</option>
+                        <option value="6">海报</option>
+                        <option value="7">相框</option>
+                        <option value="8">T恤</option>
+                        <option value="9">卫衣</option>
+                        <option value="10">帆布袋</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">搜索次数</label>
+                <div class="layui-input-inline">
+                    <input id="searchTimes" name="searchTimes" lay-verify="required" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+                <label class="layui-form-label">关键字</label>
+                <div class="layui-input-inline">
+                    <input id="keyWord" name="keyWord" lay-verify="required" autocomplete="off" class="layui-input"
+                           type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否刷单</label>
+                <div class="layui-input-inline">
+                    <select name="haveBrushSingle" id="haveBrushSingle2" style="width: 120px;height: 38px">
+                        <option value="0">全部</option>
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </select>
+                </div>
+                <label class="layui-form-label">评价次数</label>
+                <div class="layui-input-inline">
+                    <input id="evaluationTimes" name="evaluationTimes" lay-verify="required" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">有图评价次数</label>
+                <div class="layui-input-inline">
+                    <input id="havePictrueEvaluationTimes" name="havePictrueEvaluationTimes" lay-verify="required"
+                           autocomplete="off" class="layui-input" type="text"/>
+                </div>
+                <label class="layui-form-label">销量</label>
+                <div class="layui-input-inline">
+                    <input id="salesCount" name="salesCount" lay-verify="required" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">刷单数量</label>
+                <div class="layui-input-inline">
+                    <input id="brushSingleTimes" name="brushSingleTimes" lay-verify="required" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+                <label class="layui-form-label">刷单成本</label>
+                <div class="layui-input-inline">
+                    <input id="brushSingleCost" name="brushSingleCost" lay-verify="required" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">详情是否优化</label>
+                <div class="layui-input-inline">
+                    <select name="detailsOptimization" id="detailsOptimization2" style="width: 120px;height: 38px">
+                        <option value="0">全部</option>
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-inline">
+                    <input style="width: 900px" id="remark" name="remark" lay-verify="required" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">分析</label>
+                <div class="layui-input-inline">
+                    <input style="width: 900px" id="analyze" name="analyze" lay-verify="required" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block" style="margin-left: 10px;">
+                    <button class="layui-btn" lay-submit="" lay-filter="goodsSubmit">提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--底部-->
+    <div th:replace="fragments/footer :: footer"></div>
+    <script src="/js/goods/goodsManage.js"></script>
+
+</div>
+</body>
+</html>
