@@ -48,5 +48,5 @@ public interface GoodsMapper {
      */
     int updateByPrimaryKey(Goods record);
 
-    List<Goods> selectBy(int sort, @Param("goods") Goods goods);
+    List<Goods> selectBy(@Param("sort") int sort, @Param("goods") Goods goods);
 }

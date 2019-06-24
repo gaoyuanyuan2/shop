@@ -28,19 +28,19 @@ $(function () {
             },
             cols: [[
                 {type: 'numbers'}
-                , {field: 'startName', title: '明星名称', align: 'center'}
-                , {field: 'type', title: '类型', align: 'center'}
-                , {field: 'searchTimes', title: '搜索次数', align: 'center'}
-                , {field: 'keyWord', title: '搜索关键字', align: 'center'}
-                , {field: 'haveBrushSingle', title: '是否刷单', align: 'center'}
-                , {field: 'evaluationTimes', title: '评价次数', align: 'center'}
-                , {field: 'havePictrueEvaluationTimes', title: '有图评价次数', align: 'center'}
-                , {field: 'salesCount', title: '销量', align: 'center'}
-                , {field: 'brushSingleTimes', title: '刷单数量', align: 'center'}
-                , {field: 'brushSingleCost', title: '刷单成本', align: 'center'}
-                , {field: 'detailsOptimization', title: '详情是否优化', align: 'center'}
-                , {field: 'createTime', title: '创建时间', align: 'center', width: 200}
-                , {field: 'updateTime', title: '修改时间', align: 'center', width: 200}
+                , {field: 'startName', title: '明星名称', align: 'center', width: 100}
+                , {field: 'type', title: '类型', align: 'center', width: 75}
+                , {field: 'searchTimes', title: '搜索次数', align: 'center', width: 100}
+                , {field: 'keyWord', title: '搜索关键字', align: 'center', width: 120}
+                , {field: 'haveBrushSingle', title: '是否刷单', align: 'center', width: 100}
+                , {field: 'evaluationTimes', title: '评价次数', align: 'center', width: 100}
+                , {field: 'havePictrueEvaluationTimes', title: '有图评价次数', align: 'center', width: 120}
+                , {field: 'salesCount', title: '销量', align: 'center', width: 75}
+                , {field: 'brushSingleTimes', title: '刷单数量', align: 'center', width: 100}
+                , {field: 'brushSingleCost', title: '刷单成本', align: 'center', width: 100}
+                , {field: 'detailsOptimization', title: '详情是否优化', align: 'center', width: 120}
+                , {field: 'createTime', title: '创建时间', align: 'center', width: 180}
+                , {field: 'updateTime', title: '修改时间', align: 'center', width: 180}
                 , {fixed: 'right', title: '操作', align: 'center', toolbar: '#optBar'}
             ]],
             id: 'reload'
