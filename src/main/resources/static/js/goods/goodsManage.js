@@ -118,10 +118,12 @@ $(function () {
             } else if (obj.event === 'edit') {
                 //编辑
                 edit(data);
-            } else if (obj.event === 'recover') {
-                //恢复
-                recoverGoods(data, data.id);
+            }else if (obj.event === 'addSearch') {
+                addSearch(obj,data.id);
+            }else if (obj.event === 'addSale') {
+                addSale(obj,data.id);
             }
+
         });
 
         //监听提交
@@ -151,6 +153,8 @@ function formSubmit(obj) {
                     layer.alert(data.msg)
                 } else {
                     layer.alert("重复了") ;
+                    layer.closeAll()
+                    load(obj);
                 }
             }
         },
@@ -283,6 +287,38 @@ function delGoods(obj, id) {
     }
 }
 
+function addSearch(obj,id) {
+    if (null != id) {
+        $.post("/goods/addSearch", {"id": id}, function (data) {
+            if (data.code == 1) {
+                layer.alert(data.msg, function () {
+                    layer.closeAll();
+                    load(obj);
+                });
+            } else {
+                layer.alert(data.msg);
+            }
+        });
+    }else{
+        layer.alert("id is null！");
+    }
+}
+function addSale(obj,id) {
+    if (null != id) {
+        $.post("/goods/addSale", {"id": id}, function (data) {
+            if (data.code == 1) {
+                layer.alert(data.msg, function () {
+                    layer.closeAll();
+                    load(obj);
+                });
+            } else {
+                layer.alert(data.msg);
+            }
+        });
+    }else{
+        layer.alert("id is null！");
+    }
+}
 
 function cleanGoods() {
     $("#goodsName").val("");

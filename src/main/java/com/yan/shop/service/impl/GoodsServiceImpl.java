@@ -37,7 +37,7 @@ public class GoodsServiceImpl implements GoodsService {
         List<Goods> goods = goodsMapper.selectBy(req.getSort() == null ? 0 : req.getSort(), buildGoodsCondition(req));
         if (!CollectionUtils.isEmpty(goods)) {
             pageDataResult.setList(goods);
-            pageDataResult.setTotals(Integer.valueOf(page.getTotal()+""));
+            pageDataResult.setTotals(Integer.valueOf(page.getTotal() + ""));
         }
         return pageDataResult;
     }
@@ -52,6 +52,7 @@ public class GoodsServiceImpl implements GoodsService {
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("添加异常！", e);
+            goodsMapper.addSearchTimesByNameAndType(goods.getStartName(), goods.getType());
         }
         return data;
     }
@@ -79,6 +80,32 @@ public class GoodsServiceImpl implements GoodsService {
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("删除异常！", e);
+        }
+        return data;
+    }
+
+    @Override
+    public Map<String, Object> addSearch(Long id) {
+        Map<String, Object> data = new HashMap<>();
+        try {
+            // 删除用户
+            if (ShopUtils.buildRes(data, goodsMapper.addSearch(id), logger, id)) return data;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("addSearch异常！", e);
+        }
+        return data;
+    }
+
+    @Override
+    public Map<String, Object> addSale(Long id) {
+        Map<String, Object> data = new HashMap<>();
+        try {
+            // 删除用户
+            if (ShopUtils.buildRes(data, goodsMapper.addSale(id), logger, id)) return data;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("addSale异常！", e);
         }
         return data;
     }

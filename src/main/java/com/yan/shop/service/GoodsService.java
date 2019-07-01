@@ -17,4 +17,8 @@ public interface GoodsService {
     Map<String, Object> updateGoods(Goods goods);
 
     Map<String, Object> deleteGoods(Long id);
+
+    Map<String, Object> addSearch(Long id);
+
+    Map<String, Object> addSale(Long id);
 }

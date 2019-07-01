@@ -13,13 +13,13 @@ public class ShopUtils {
         int result = i;
         if(result == 0){
             data.put("code",0);
-            data.put("msg","删除失败");
-            logger.error("删除失败");
+            data.put("msg","失败");
+            logger.error("失败");
             return true;
         }
         data.put("code",1);
-        data.put("msg","删除成功");
-        logger.info("删除成功");
+        data.put("msg","成功");
+        logger.info("成功");
         return false;
     }
 

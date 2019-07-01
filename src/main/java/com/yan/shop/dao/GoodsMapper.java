@@ -49,4 +49,10 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
 
     List<Goods> selectBy(@Param("sort") int sort, @Param("goods") Goods goods);
+
+    int addSearchTimesByNameAndType(@Param("startName") String startName, @Param("type") int type);
+
+    int addSearch(Long id);
+
+    int addSale(Long id);
 }

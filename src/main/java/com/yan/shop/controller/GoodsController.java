@@ -78,4 +78,22 @@ public class GoodsController {
 
 
     }
+
+    @RequestMapping(value = "/addSearch", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> addSearch(@RequestParam("id") Long id) {
+
+        return goodsService.addSearch(id);
+
+
+    }
+
+    @RequestMapping(value = "/addSale", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> addSale(@RequestParam("id") Long id) {
+
+        return goodsService.addSale(id);
+
+
+    }
 }
