@@ -24,6 +24,7 @@
         <result column="update_by" property="updateBy" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="have_together" property="haveTogether" jdbcType="INTEGER"/>
     </resultMap>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         <!--
@@ -46,7 +47,7 @@
         have_pictrue_evaluation_times, sales_count,
         brush_single_times, brush_single_cost, details_optimization,
         remark, `analyze`, create_by,
-        update_by, create_time, update_time
+        update_by, create_time, update_time,have_together
         )
         values (#{startName,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{searchTimes,jdbcType=INTEGER},
         #{keyWord,jdbcType=VARCHAR}, #{haveBrushSingle,jdbcType=INTEGER}, #{evaluationTimes,jdbcType=INTEGER},
@@ -54,7 +55,8 @@
         #{brushSingleTimes,jdbcType=INTEGER}, #{brushSingleCost,jdbcType=DOUBLE},
         #{detailsOptimization,jdbcType=INTEGER},
         #{remark,jdbcType=VARCHAR}, #{analyze,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR},
-        #{updateBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+        #{updateBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+        #{haveTogether,jdbcType=INTEGER}
         )
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.yan.shop.entity.Goods">
@@ -70,6 +72,7 @@
         have_brush_single = #{haveBrushSingle,jdbcType=INTEGER},
         evaluation_times = #{evaluationTimes,jdbcType=INTEGER},
         have_pictrue_evaluation_times = #{havePictrueEvaluationTimes,jdbcType=INTEGER},
+        have_together = #{haveTogether,jdbcType=INTEGER},
         sales_count = #{salesCount,jdbcType=INTEGER},
         brush_single_times = #{brushSingleTimes,jdbcType=INTEGER},
         brush_single_cost = #{brushSingleCost,jdbcType=DOUBLE},
@@ -87,7 +90,7 @@
         -->
         select id, start_name, type, search_times, key_word, have_brush_single, evaluation_times,
         have_pictrue_evaluation_times, sales_count, brush_single_times, brush_single_cost,
-        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time
+        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together
         from goods
         where id = #{id,jdbcType=BIGINT}
     </select>
@@ -98,14 +101,14 @@
         -->
         select id, start_name, type, search_times, key_word, have_brush_single, evaluation_times,
         have_pictrue_evaluation_times, sales_count, brush_single_times, brush_single_cost,
-        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time
+        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together
         from goods
     </select>
 
     <select id="selectBy" resultMap="BaseResultMap">
         select id, start_name, type, search_times, key_word, have_brush_single, evaluation_times,
         have_pictrue_evaluation_times, sales_count, brush_single_times, brush_single_cost,
-        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time
+        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together
         from goods
         <where>
             <if test="goods.startName != null and goods.startName !=''">

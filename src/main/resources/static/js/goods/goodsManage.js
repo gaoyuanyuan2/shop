@@ -32,13 +32,14 @@ $(function () {
                 , {field: 'type', title: '类型', align: 'center', width: 75}
                 , {field: 'searchTimes', title: '搜索次数', align: 'center', width: 100}
                 , {field: 'keyWord', title: '搜索关键字', align: 'center', width: 120}
-                , {field: 'haveBrushSingle', title: '是否刷单', align: 'center', width: 100}
+                , {field: 'haveBrushSingle', title: '刷单', align: 'center', width: 80}
                 , {field: 'evaluationTimes', title: '评价次数', align: 'center', width: 100}
                 , {field: 'havePictrueEvaluationTimes', title: '有图评价次数', align: 'center', width: 120}
                 , {field: 'salesCount', title: '销量', align: 'center', width: 75}
                 , {field: 'brushSingleTimes', title: '刷单数量', align: 'center', width: 100}
                 , {field: 'brushSingleCost', title: '刷单成本', align: 'center', width: 100}
-                , {field: 'detailsOptimization', title: '详情是否优化', align: 'center', width: 120}
+                , {field: 'detailsOptimization', title: '详情优化', align: 'center', width: 80}
+                , {field: 'haveTogether', title: '聚合', align: 'center', width: 80}
                 , {field: 'createTime', title: '创建时间', align: 'center', width: 180}
                 , {field: 'updateTime', title: '修改时间', align: 'center', width: 180}
                 , {fixed: 'right', title: '操作', align: 'center', toolbar: '#optBar'}
@@ -79,6 +80,13 @@ $(function () {
                         var newStr = str.replace("T", " ").replace("+0000", "").replace(".000", "");
                         $(this).text(newStr)
 
+                    }
+                });
+                $("[data-field='haveTogether']").children().each(function () {
+                    if ($(this).text() == '1') {
+                        $(this).text("是")
+                    } else if ($(this).text() == '2') {
+                        $(this).text("否")
                     }
                 });
                 $("[data-field='type']").children().each(function () {
@@ -191,6 +199,7 @@ function edit(data, title) {
         $("#brushSingleTimes").val(data.brushSingleTimes);
         $("#brushSingleCost").val(data.brushSingleCost);
         $("#detailsOptimization2").val(data.detailsOptimization);
+        $("#haveTogether2").val(data.haveTogether);
         $("#remark").val(data.remark);
         $("#analyze").val(data.analyze);
 
