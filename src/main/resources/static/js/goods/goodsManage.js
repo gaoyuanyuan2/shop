@@ -239,6 +239,8 @@ function edit(data, title) {
             cleanGoods();
         }
     });
+
+    form.render();
 }
 
 //重新加载table
