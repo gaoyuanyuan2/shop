@@ -138,14 +138,14 @@
     <update id="addSearchTimesByNameAndType">
         update goods
         set
-        search_times = search_times+1
+        search_times = ifnull(search_times, 0) +1
         where start_name = #{startName} and  type = #{type}
     </update>
 
     <update id="addSearch">
         update goods
         set
-        search_times = search_times+1,
+        search_times = ifnull(search_times, 0) +1,
         update_time = now() + interval 8 hour
         where  id = #{id,jdbcType=BIGINT}
     </update>
@@ -153,7 +153,7 @@
     <update id="addSale">
         update goods
         set
-        sales_count = sales_count+1,
+        sales_count =  ifnull(sales_count, 0)+1,
         update_time = now() + interval 8 hour
         where  id = #{id,jdbcType=BIGINT}
     </update>
