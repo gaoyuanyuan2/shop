@@ -160,9 +160,10 @@ function formSubmit(obj) {
                 if (data.msg) {
                     layer.alert(data.msg)
                 } else {
-                    layer.alert("重复了") ;
-                    layer.closeAll()
-                    load(obj);
+                    layer.alert("重复了", function () {
+                        layer.closeAll()
+                        load(obj);
+                    });
                 }
             }
         },
