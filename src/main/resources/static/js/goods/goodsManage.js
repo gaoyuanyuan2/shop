@@ -10,7 +10,7 @@ $(function () {
 
         tableIns = table.render({
             elem: '#goodsList',
-            url: '/goods/getOrdersList',
+            url: '/goods/getGoodsList',
             method: 'get', //默认：get请求
             cellMinWidth: 80
             , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
@@ -124,7 +124,7 @@ $(function () {
             var data = obj.data;
             if (obj.event === 'del') {
                 //删除
-                delOrders(data, data.id);
+                delGoods(data, data.id);
             } else if (obj.event === 'edit') {
                 //编辑
                 edit(data);
@@ -151,7 +151,7 @@ function formSubmit(obj) {
     $.ajax({
         type: "post",
         data: $("#goodsForm").serialize(),
-        url: "/goods/setOrders",
+        url: "/goods/setGoods",
         success: function (data) {
             if (data.code == 1) {
                 layer.alert(data.msg, function () {
@@ -237,9 +237,9 @@ function edit(data, title) {
         resize: false,
         shadeClose: true,
         area: ['1000px', '800px'],
-        content: $('#setOrders'),
+        content: $('#setGoods'),
         end: function () {
-            cleanOrders();
+            cleanGoods();
         }
     });
 
@@ -280,7 +280,7 @@ function reset() {
 }
 
 //删除
-function delOrders(obj, id) {
+function delGoods(obj, id) {
     if (null != id) {
         layer.confirm('您确定要删除吗？', {
             btn: ['确认', '返回'] //按钮
@@ -334,7 +334,7 @@ function addSale(obj,id) {
     }
 }
 
-function cleanOrders() {
+function cleanGoods() {
 
 }
 
