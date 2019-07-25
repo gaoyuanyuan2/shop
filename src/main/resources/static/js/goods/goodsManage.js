@@ -27,6 +27,8 @@ $(function () {
                 dataName: 'list' //数据列表的字段名称，默认：data
             },
             cols: [[
+
+                {fixed: 'left', title: '操作', align: 'center', toolbar: '#optBar'},
                 {type: 'numbers'}
                 , {field: 'startName', title: '明星名称', align: 'center', width: 100}
                 , {field: 'type', title: '类型', align: 'center', width: 75}
@@ -42,7 +44,7 @@ $(function () {
                 , {field: 'haveTogether', title: '聚合', align: 'center', width: 80}
                 , {field: 'createTime', title: '创建时间', align: 'center', width: 180}
                 , {field: 'updateTime', title: '修改时间', align: 'center', width: 180}
-                , {fixed: 'right', title: '操作', align: 'center', toolbar: '#optBar'}
+
             ]],
             id: 'reload'
             ,
