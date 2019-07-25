@@ -9,8 +9,8 @@ $(function () {
         form = layui.form;
 
         tableIns = table.render({
-            elem: '#goodsList',
-            url: '/goods/getOrdersList',
+            elem: '#orderList',
+            url: '/order/getOrderList',
             method: 'get', //默认：get请求
             cellMinWidth: 80
             , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
@@ -32,16 +32,11 @@ $(function () {
                 {type: 'numbers'}
                 , {field: 'startName', title: '明星名称', align: 'center', width: 100}
                 , {field: 'type', title: '类型', align: 'center', width: 75}
-                , {field: 'searchTimes', title: '搜索次数', align: 'center', width: 100}
-                , {field: 'keyWord', title: '搜索关键字', align: 'center', width: 120}
-                , {field: 'haveBrushSingle', title: '刷单', align: 'center', width: 80}
-                , {field: 'evaluationTimes', title: '评价次数', align: 'center', width: 100}
-                , {field: 'havePictrueEvaluationTimes', title: '有图评价次数', align: 'center', width: 120}
-                , {field: 'salesCount', title: '销量', align: 'center', width: 75}
-                , {field: 'brushSingleTimes', title: '刷单数量', align: 'center', width: 100}
-                , {field: 'brushSingleCost', title: '刷单成本', align: 'center', width: 100}
-                , {field: 'detailsOptimization', title: '详情优化', align: 'center', width: 80}
-                , {field: 'haveTogether', title: '聚合', align: 'center', width: 80}
+                , {field: 'costPrice', title: '成本价', align: 'center', width: 75}
+                , {field: 'salePrice', title: '销售价', align: 'center', width: 75}
+                , {field: 'giveGood', title: '是否好评', align: 'center', width: 80}
+                , {field: 'havePicture', title: '是否带图', align: 'center', width: 80}
+                , {field: 'phone', title: '手机号', align: 'center', width: 120}
                 , {field: 'createTime', title: '创建时间', align: 'center', width: 180}
                 , {field: 'updateTime', title: '修改时间', align: 'center', width: 180}
 
@@ -49,20 +44,7 @@ $(function () {
             id: 'reload'
             ,
             done: function (res, curr, count) {
-                $("[data-field='haveBrushSingle']").children().each(function () {
-                    if ($(this).text() == '1') {
-                        $(this).text("是")
-                    } else if ($(this).text() == '2') {
-                        $(this).text("否")
-                    }
-                });
-                $("[data-field='detailsOptimization']").children().each(function () {
-                    if ($(this).text() == '1') {
-                        $(this).text("是")
-                    } else if ($(this).text() == '2') {
-                        $(this).text("否")
-                    }
-                });
+
                 $("[data-field='createTime']").children().each(function () {
                     var str = this.innerText;
                     if ($(this).text() == null) {
@@ -84,34 +66,18 @@ $(function () {
 
                     }
                 });
-                $("[data-field='haveTogether']").children().each(function () {
+                $("[data-field='giveGood']").children().each(function () {
                     if ($(this).text() == '1') {
                         $(this).text("是")
                     } else if ($(this).text() == '2') {
                         $(this).text("否")
                     }
                 });
-                $("[data-field='type']").children().each(function () {
+                $("[data-field='havePicture']").children().each(function () {
                     if ($(this).text() == '1') {
-                        $(this).text("手机壳")
+                        $(this).text("是")
                     } else if ($(this).text() == '2') {
-                        $(this).text("台历")
-                    } else if ($(this).text() == '3') {
-                        $(this).text("相册")
-                    } else if ($(this).text() == '4') {
-                        $(this).text("装饰画")
-                    } else if ($(this).text() == '5') {
-                        $(this).text("抱枕")
-                    } else if ($(this).text() == '6') {
-                        $(this).text("海报")
-                    } else if ($(this).text() == '7') {
-                        $(this).text("相框")
-                    } else if ($(this).text() == '8') {
-                        $(this).text("T恤")
-                    } else if ($(this).text() == '9') {
-                        $(this).text("卫衣")
-                    } else if ($(this).text() == '10') {
-                        $(this).text("帆布袋")
+                        $(this).text("否")
                     }
                 });
                 pageCurr = curr;
@@ -120,24 +86,20 @@ $(function () {
 
 
         //监听工具条
-        table.on('tool(goodsTable)', function (obj) {
+        table.on('tool(orderTable)', function (obj) {
             var data = obj.data;
             if (obj.event === 'del') {
                 //删除
-                delOrders(data, data.id);
+                delOrder(data, data.id);
             } else if (obj.event === 'edit') {
                 //编辑
                 edit(data);
-            }else if (obj.event === 'addSearch') {
-                addSearch(obj,data.id);
-            }else if (obj.event === 'addSale') {
-                addSale(obj,data.id);
             }
 
         });
 
         //监听提交
-        form.on('submit(goodsSubmit)', function (data) {
+        form.on('submit(orderSubmit)', function (data) {
             formSubmit(data);
             return false;
         });
@@ -150,8 +112,8 @@ $(function () {
 function formSubmit(obj) {
     $.ajax({
         type: "post",
-        data: $("#goodsForm").serialize(),
-        url: "/goods/setOrders",
+        data: $("#orderForm").serialize(),
+        url: "/order/setOrder",
         success: function (data) {
             if (data.code == 1) {
                 layer.alert(data.msg, function () {
@@ -193,19 +155,12 @@ function edit(data, title) {
         $("#id").val(data.id);
         $("#startName").val(data.startName);
         $("#type2").val(data.type);
-        $("#searchTimes").val(data.searchTimes);
-        $("#keyWord").val(data.keyWord);
-        $("#haveBrushSingle2").val(data.haveBrushSingle);
-        $("#evaluationTimes").val(data.evaluationTimes);
-        $("#havePictrueEvaluationTimes").val(data.havePictrueEvaluationTimes);
-        $("#salesCount").val(data.salesCount);
-        $("#brushSingleTimes").val(data.brushSingleTimes);
-        $("#brushSingleCost").val(data.brushSingleCost);
-        $("#detailsOptimization2").val(data.detailsOptimization);
-        $("#haveTogether2").val(data.haveTogether);
+        $("#costPrice").val(data.costPrice);
+        $("#salePrice").val(data.salePrice);
+        $("#giveGood2").val(data.giveGood);
+        $("#havePicture2").val(data.havePicture);
+        $("#phone").val(data.phone);
         $("#remark").val(data.remark);
-        $("#analyze").val(data.analyze);
-
         pid = data.permissionIds;
     }
 
@@ -237,9 +192,9 @@ function edit(data, title) {
         resize: false,
         shadeClose: true,
         area: ['1000px', '800px'],
-        content: $('#setOrders'),
+        content: $('#setOrder'),
         end: function () {
-            cleanOrders();
+            cleanOrder();
         }
     });
 
@@ -261,9 +216,9 @@ function search() {
         where: {
             startName: $("#searchStartName").val(),
             type: $("#type").val(),
-            haveBrushSingle: $("#haveBrushSingle").val(),
-            detailsOptimization: $("#detailsOptimization").val(),
-            sort: $('input[name="sort"]:checked').val()
+            phone: $("#phone").val(),
+            giveGood: $("#giveGood").val(),
+            havePicture: $("#havePicture").val()
         }
         , page: {
             curr: 1 //从当前页码开始
@@ -272,20 +227,20 @@ function search() {
 }
 
 function reset() {
-    $("#searchStartName").val("");
+    $("#startName").val("");
     $("#type").val("");
-    $("#haveBrushSingle").val("");
-    $("#detailsOptimization").val("");
-    $("input[name='sort'][value='0']").attr("checked", true);
+    $("#phone").val("");
+    $("#giveGood").val("");
+    $("#havePicture").val("");
 }
 
 //删除
-function delOrders(obj, id) {
+function delOrder(obj, id) {
     if (null != id) {
         layer.confirm('您确定要删除吗？', {
             btn: ['确认', '返回'] //按钮
         }, function () {
-            $.post("/goods/delete", {"id": id}, function (data) {
+            $.post("/order/delete", {"id": id}, function (data) {
                 if (data.code == 1) {
                     layer.alert(data.msg, function () {
                         layer.closeAll();
@@ -301,40 +256,7 @@ function delOrders(obj, id) {
     }
 }
 
-function addSearch(obj,id) {
-    if (null != id) {
-        $.post("/goods/addSearch", {"id": id}, function (data) {
-            if (data.code == 1) {
-                layer.alert(data.msg, function () {
-                    layer.closeAll();
-                    load(obj);
-                });
-            } else {
-                layer.alert(data.msg);
-            }
-        });
-    }else{
-        layer.alert("id is null！");
-    }
-}
-function addSale(obj,id) {
-    if (null != id) {
-        $.post("/goods/addSale", {"id": id}, function (data) {
-            if (data.code == 1) {
-                layer.alert(data.msg, function () {
-                    layer.closeAll();
-                    load(obj);
-                });
-            } else {
-                layer.alert(data.msg);
-            }
-        });
-    }else{
-        layer.alert("id is null！");
-    }
-}
 
-function cleanOrders() {
-
+function cleanOrder() {
 }
 

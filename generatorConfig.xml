@@ -88,28 +88,11 @@
             <columnOverride column="create_by" javaType="long"/>
             <columnOverride column="update_by" javaType="long"/>
         </table>-->
-        <table tableName="goods"
-               domainObjectName="Goods">
+        <table tableName="orders"
+               domainObjectName="Order">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="MySql"
                           identity="true"/>
-            <columnOverride column="start_name" javaType="String"/>
-            <columnOverride column="type" javaType="int"/>
-            <columnOverride column="search_times" javaType="int"/>
-            <columnOverride column="key_word" javaType="String"/>
-            <columnOverride column="have_brush_single" javaType="int"/>
-            <columnOverride column="evaluation_times" javaType="int"/>
-            <columnOverride column="have_pictrue_evaluation_times" javaType="int"/>
-            <columnOverride column="sales_count" javaType="int"/>
-            <columnOverride column="brush_single_times" javaType="int"/>
-            <columnOverride column="brush_single_cost" javaType="double"/>
-            <columnOverride column="details_optimization" javaType="int"/>
-            <columnOverride column="remark" javaType="String"/>
-            <columnOverride column="analyze" javaType="String"/>
-            <columnOverride column="create_by" javaType="String"/>
-            <columnOverride column="update_by" javaType="String"/>
-            <columnOverride column="create_time" javaType="Date"/>
-            <columnOverride column="update_time" javaType="Date"/>
         </table>
 
     </context>
