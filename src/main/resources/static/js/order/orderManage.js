@@ -28,7 +28,7 @@ $(function () {
             },
             cols: [[
 
-                {fixed: 'left', title: '操作', align: 'center', toolbar: '#optBar'},
+                {fixed: 'left', title: '操作', align: 'center', toolbar: '#optBar', width: 200},
                 {type: 'numbers'}
                 , {field: 'startName', title: '明星名称', align: 'center', width: 100}
                 , {field: 'type', title: '类型', align: 'center', width: 75}

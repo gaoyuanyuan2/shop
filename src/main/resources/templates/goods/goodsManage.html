@@ -13,7 +13,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">明星名</label>
             <div class="layui-input-inline">
-                <input type="text"  lay-verify="" id="searchStartName" class="layui-input"/>
+                <input type="text" lay-verify="" id="searchStartName" class="layui-input"/>
             </div>
             <label class="layui-form-label">类型</label>
             <div class="layui-input-inline">
@@ -39,6 +39,7 @@
                     <option value="2">否</option>
                 </select>
             </div>
+
             <label class="layui-form-label" style="width: 150px"> 详情是否优化</label>
             <div class="layui-input-inline">
                 <select id="detailsOptimization" style="width: 120px;height: 38px">
@@ -47,6 +48,8 @@
                     <option value="2">否</option>
                 </select>
             </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">排序</label>
             <div class="layui-input-inline">
                 <input type="radio" name="sort" value="0" checked>默认
@@ -60,7 +63,7 @@
         <div class="layui-form-item">
             <div class="layui-input-block" style="margin-left: 10px;">
                 <button class="layui-btn" onclick="search()">搜索</button>
-                <button  class="layui-btn" onclick="reset()" >重置</button>
+                <button class="layui-btn" onclick="reset()">重置</button>
                 <button class="layui-btn layui-btn-normal" onclick="add()">新增</button>
             </div>
         </div>
@@ -88,7 +91,7 @@
                 </div>
                 <label class="layui-form-label">类型</label>
                 <div class="layui-input-inline">
-                    <select name="type"  id="type2">
+                    <select name="type" id="type2">
                         <option value="0">全部</option>
                         <option value="1">手机壳</option>
                         <option value="2">台历</option>
@@ -106,12 +109,12 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">搜索次数</label>
                 <div class="layui-input-inline">
-                    <input id="searchTimes" name="searchTimes"  autocomplete="off" lay-verify="required"
+                    <input id="searchTimes" name="searchTimes" autocomplete="off" lay-verify="required"
                            class="layui-input" type="text"/>
                 </div>
                 <label class="layui-form-label">关键字</label>
                 <div class="layui-input-inline">
-                    <input id="keyWord" name="keyWord"  autocomplete="off" class="layui-input"
+                    <input id="keyWord" name="keyWord" autocomplete="off" class="layui-input"
                            type="text"/>
                 </div>
             </div>
@@ -125,7 +128,7 @@
                 </div>
                 <label class="layui-form-label">评价次数</label>
                 <div class="layui-input-inline">
-                    <input id="evaluationTimes" name="evaluationTimes"  autocomplete="off"
+                    <input id="evaluationTimes" name="evaluationTimes" autocomplete="off"
                            class="layui-input" type="text"/>
                 </div>
             </div>
@@ -144,12 +147,12 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">刷单数量</label>
                 <div class="layui-input-inline">
-                    <input id="brushSingleTimes" name="brushSingleTimes"  autocomplete="off"
+                    <input id="brushSingleTimes" name="brushSingleTimes" autocomplete="off"
                            class="layui-input" type="text"/>
                 </div>
                 <label class="layui-form-label">刷单成本</label>
                 <div class="layui-input-inline">
-                    <input id="brushSingleCost" name="brushSingleCost"  autocomplete="off"
+                    <input id="brushSingleCost" name="brushSingleCost" autocomplete="off"
                            class="layui-input" type="text"/>
                 </div>
             </div>
@@ -180,7 +183,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">分析</label>
                 <div class="layui-input-inline">
-                    <input style="width: 900px" id="analyze" name="analyze"  autocomplete="off"
+                    <input style="width: 900px" id="analyze" name="analyze" autocomplete="off"
                            class="layui-input" type="text"/>
                 </div>
             </div>
