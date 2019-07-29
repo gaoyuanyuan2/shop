@@ -19,6 +19,7 @@
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="return_cash" jdbcType="DOUBLE" property="returnCash" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--

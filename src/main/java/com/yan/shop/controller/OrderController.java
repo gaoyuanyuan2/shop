@@ -43,7 +43,6 @@ public class OrderController {
             if (null == req.getLimit()) {
                 req.setLimit(10);
             }
-            // 获取角色列表
             pdr = orderService.getOrderList(req);
             logger.info("列表查询=pdr:" + pdr);
 
@@ -61,10 +60,8 @@ public class OrderController {
         logger.info("设置Order[新增或更新]！order:" + order);
         Map<String, Object> data;
         if (order.getId() == null) {
-            //新增角色
             data = orderService.addOrder(order);
         } else {
-            //修改角色
             data = orderService.updateOrder(order);
         }
         return data;

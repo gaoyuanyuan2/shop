@@ -34,8 +34,9 @@ $(function () {
                 , {field: 'type', title: '类型', align: 'center', width: 75}
                 , {field: 'costPrice', title: '成本价', align: 'center', width: 75}
                 , {field: 'salePrice', title: '销售价', align: 'center', width: 75}
-                , {field: 'giveGood', title: '是否好评', align: 'center', width: 80}
-                , {field: 'havePicture', title: '是否带图', align: 'center', width: 80}
+                , {field: 'returnCash', title: '返现', align: 'center', width: 75}
+                , {field: 'giveGood', title: '是否好评', align: 'center', width: 120}
+                , {field: 'havePicture', title: '是否带图', align: 'center', width: 120}
                 , {field: 'phone', title: '手机号', align: 'center', width: 120}
                 , {field: 'createTime', title: '创建时间', align: 'center', width: 180}
                 , {field: 'updateTime', title: '修改时间', align: 'center', width: 180}
@@ -161,6 +162,7 @@ function edit(data, title) {
         $("#havePicture2").val(data.havePicture);
         $("#phone").val(data.phone);
         $("#remark").val(data.remark);
+        $("#returnCash").val(data.returnCash);
         pid = data.permissionIds;
     }
 
