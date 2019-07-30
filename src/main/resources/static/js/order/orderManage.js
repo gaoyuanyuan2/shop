@@ -81,6 +81,29 @@ $(function () {
                         $(this).text("否")
                     }
                 });
+                $("[data-field='type']").children().each(function () {
+                    if ($(this).text() == '1') {
+                        $(this).text("手机壳")
+                    } else if ($(this).text() == '2') {
+                        $(this).text("台历")
+                    } else if ($(this).text() == '3') {
+                        $(this).text("相册")
+                    } else if ($(this).text() == '4') {
+                        $(this).text("装饰画")
+                    } else if ($(this).text() == '5') {
+                        $(this).text("抱枕")
+                    } else if ($(this).text() == '6') {
+                        $(this).text("海报")
+                    } else if ($(this).text() == '7') {
+                        $(this).text("相框")
+                    } else if ($(this).text() == '8') {
+                        $(this).text("T恤")
+                    } else if ($(this).text() == '9') {
+                        $(this).text("卫衣")
+                    } else if ($(this).text() == '10') {
+                        $(this).text("帆布袋")
+                    }
+                });
                 pageCurr = curr;
             }
         });
