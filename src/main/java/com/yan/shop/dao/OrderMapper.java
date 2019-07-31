@@ -4,6 +4,7 @@ import com.yan.shop.entity.Order;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -49,4 +50,7 @@ public interface OrderMapper {
     int updateByPrimaryKey(Order record);
 
     List<Order> selectBy(@Param("order") Order order);
+
+    List<Order> countBy(@Param("format") String format, @Param("type") Integer type, @Param("startTime") Date startTime,
+                        @Param("endTime") Date endTime);
 }
