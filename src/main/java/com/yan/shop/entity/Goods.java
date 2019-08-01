@@ -1,7 +1,6 @@
 package com.yan.shop.entity;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Goods {
     /**
