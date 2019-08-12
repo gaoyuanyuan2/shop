@@ -21,3 +21,4 @@ plugin/.DS_Store
 .DS_Store
 logs
 /bin/
+config.properties
