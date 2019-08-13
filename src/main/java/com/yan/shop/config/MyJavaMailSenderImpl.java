@@ -18,6 +18,7 @@ import java.util.Properties;
 @Configuration
 @EnableConfigurationProperties(MailProperties.class)
 public class MyJavaMailSenderImpl extends JavaMailSenderImpl {
+
     private ArrayList<String> usernameList;
     private ArrayList<String> passwordList;
     private ArrayList<String> hostList;
