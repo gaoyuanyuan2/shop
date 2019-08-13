@@ -1,5 +1,6 @@
 package com.yan.shop.config;
 
+import com.yan.shop.common.utils.AesEncryptUtils;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -16,9 +17,11 @@ import java.util.Properties;
  */
 @Configuration
 @EnableConfigurationProperties(MailProperties.class)
-public class MyJavaMailSenderImpl  extends JavaMailSenderImpl {
+public class MyJavaMailSenderImpl extends JavaMailSenderImpl {
     private ArrayList<String> usernameList;
     private ArrayList<String> passwordList;
+    private ArrayList<String> hostList;
+    private static final String KEY = "528cb9ea86f3404da563a3d0b848f92a";
     private int currentMailId = 0;
 
     private final MailProperties properties;
@@ -27,7 +30,7 @@ public class MyJavaMailSenderImpl  extends JavaMailSenderImpl {
         this.properties = properties;
         if (usernameList == null)
             usernameList = new ArrayList<>();
-        String[] userNames = this.properties.getUsername().split(",");
+        String[] userNames = AesEncryptUtils.decrypt(this.properties.getUsername(), KEY).split(",");
         if (userNames != null) {
             for (String user : userNames) {
                 usernameList.add(user);
@@ -35,21 +38,27 @@ public class MyJavaMailSenderImpl  extends JavaMailSenderImpl {
         }
         if (passwordList == null)
             passwordList = new ArrayList<>();
-        String[] passwords = this.properties.getPassword().split(",");
+        String[] passwords = AesEncryptUtils.decrypt(this.properties.getPassword(), KEY).split(",");
         if (passwords != null) {
             for (String pw : passwords) {
                 passwordList.add(pw);
             }
         }
+        if (hostList == null)
+            hostList = new ArrayList<>();
+        String[] hosts = this.properties.getHost().split(",");
+        if (hosts != null) {
+            for (String host : hosts) {
+                hostList.add(host);
+            }
+        }
     }
 
     @Override
-    public void send(MimeMessage[] mimeMessage ) throws MailException {
-
+    public void send(MimeMessage[] mimeMessage) throws MailException {
         super.setUsername(usernameList.get(currentMailId));
         super.setPassword(passwordList.get(currentMailId));
-
-        super.setHost(this.properties.getHost());
+        super.setHost(hostList.get(currentMailId));
         super.setDefaultEncoding(this.properties.getDefaultEncoding().name());
         super.setJavaMailProperties(asProperties(this.properties.getProperties()));
         super.send(mimeMessage);

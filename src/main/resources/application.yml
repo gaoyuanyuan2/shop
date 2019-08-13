@@ -29,9 +29,10 @@ spring:
       test-on-borrow: true
       driver-class-name: com.mysql.jdbc.Driver
   mail:
-    host: smtp.qq.com
+    host: smtp.qq.com,smtp.qq.com
     port: 465
-
+    password: ljY3wql0iRAgGhYFHOJuUU1xgsZwWPxNPT1AHu3GZqvd6EaRiryVRdQ3xVRARSBo
+    username: ynDpYLWBVjc0QIFDdsDKDRYXvDUbtsgCPKZ4FIPSXVGZTSaR05XJV5IQFK+GfvGz
     properties:
       mail:
         smtp:
