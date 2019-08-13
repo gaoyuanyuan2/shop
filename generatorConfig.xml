@@ -88,8 +88,8 @@
             <columnOverride column="create_by" javaType="long"/>
             <columnOverride column="update_by" javaType="long"/>
         </table>-->
-        <table tableName="orders"
-               domainObjectName="Order">
+        <table tableName="member"
+               domainObjectName="Member">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="MySql"
                           identity="true"/>
