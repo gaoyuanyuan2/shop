@@ -62,8 +62,6 @@ public class MyJavaMailSenderImpl extends JavaMailSenderImpl {
         super.setDefaultEncoding(this.properties.getDefaultEncoding().name());
         super.setJavaMailProperties(asProperties(this.properties.getProperties()));
         super.send(mimeMessage);
-
-        // 轮询
         currentMailId = (currentMailId + 1) % usernameList.size();
     }
 
