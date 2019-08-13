@@ -11,6 +11,7 @@ import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
+import java.util.UUID;
 
 /**
  * Created by yan on  12/08/2019.
@@ -19,10 +20,14 @@ import java.util.Properties;
 @EnableConfigurationProperties(MailProperties.class)
 public class MyJavaMailSenderImpl extends JavaMailSenderImpl {
 
+    public static void main(String[] args) {
+        System.out.println(UUID.randomUUID());
+    }
+
     private ArrayList<String> usernameList;
     private ArrayList<String> passwordList;
     private ArrayList<String> hostList;
-    private static final String KEY = "528cb9ea86f3404da563a3d0b848f92a";
+    private static final String KEY = "a3277fdd6bbb4da896f02b577b877086";
     private int currentMailId = 0;
 
     private final MailProperties properties;
