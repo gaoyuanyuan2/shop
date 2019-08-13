@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,5 +103,16 @@ public class MemberServiceImpl implements MemberService {
         data.put("code", 1);
         data.put("msg", "成功!");
         return false;
+    }
+
+    public void importMember(String emails) {
+        String[] emailArray = emails.split(",");
+        Arrays.stream(emailArray).forEach(e -> {
+            Member member = new Member();
+            member.setEmail(e);
+            member.setLabel("高圆圆");
+            member.setCreateTime(new Timestamp(System.currentTimeMillis()));
+            memberMapper.insert(member);
+        });
     }
 }
