@@ -4,6 +4,23 @@ var form;
 
 $(function () {
 
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#uploadMember' //绑定元素
+            ,url: '/member/upload' //上传接口
+            ,accept: 'file'
+            ,done: function(res){
+                load({});
+            }
+            ,error: function(){
+                load({});
+            }
+        });
+    });
+
     layui.use('table', function () {
         var table = layui.table;
         form = layui.form;
