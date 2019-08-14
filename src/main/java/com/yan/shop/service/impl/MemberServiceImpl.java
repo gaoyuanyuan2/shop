@@ -111,13 +111,20 @@ public class MemberServiceImpl implements MemberService {
             memberXls.stream().forEach(e -> {
                 String[] array = e.toString().replace("[", "").replace("]", "").split(",");
                 Member member = new Member();
-                member.setName(array[0]);
-                member.setLabel(array[1]);
-                member.setPhone(array[2]);
-                member.setEmail(array[3]);
-                member.setRemark(array[4]);
+//                member.setName(array[0]);
+                if(array[1].contains("高圆圆")){
+                    member.setLabel("高圆圆");
+                }
+                member.setPhone(array[2].replace("'",""));
+//                member.setEmail(array[3]);
+//                member.setRemark(array[4]);
                 member.setCreateTime(new Timestamp(System.currentTimeMillis()));
-                memberMapper.insert(member);
+                try {
+                    memberMapper.insert(member);
+                }catch (Exception e2){
+                    return;
+                }
+
             });
         } catch (IOException e) {
             logger.error("IOException！", e);
