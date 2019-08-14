@@ -21,7 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Timestamp;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -139,9 +138,8 @@ public class MemberServiceImpl implements MemberService {
         return false;
     }
 
-    public void importMember(String emails) {
-        String[] emailArray = emails.split(",");
-        Arrays.stream(emailArray).forEach(e -> {
+    public void importMember(List<String> emails) {
+        emails.stream().distinct().forEach(e -> {
             Member member = new Member();
             member.setEmail(e);
             member.setLabel("高圆圆");

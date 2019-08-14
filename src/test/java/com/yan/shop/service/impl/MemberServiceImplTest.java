@@ -19,8 +19,15 @@ public class MemberServiceImplTest extends BaseTest {
 
     @Test
     public void importMember() {
-//        memberService.importMember();
-
+        String str = "";
+        Pattern p = Pattern.compile("(<[^>]*>)");
+        Matcher m = p.matcher(str);
+        List<String> result=new ArrayList<>();
+        while(m.find()){
+            System.out.println(m.group().replace("<","").replace(">",""));
+            result.add(m.group().replace("<","").replace(">",""));
+        }
+        memberService.importMember(result);
     }
 
 }

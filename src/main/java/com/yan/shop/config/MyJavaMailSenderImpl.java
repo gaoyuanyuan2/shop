@@ -27,7 +27,7 @@ public class MyJavaMailSenderImpl extends JavaMailSenderImpl {
     private ArrayList<String> usernameList;
     private ArrayList<String> passwordList;
     private ArrayList<String> hostList;
-    private static final String KEY = "a3277fdd6bbb4da896f02b577b877086";
+    private static final String KEY = "03b4c47092ac4e13899338d8b1412a14";
     private int currentMailId = 0;
 
     private final MailProperties properties;

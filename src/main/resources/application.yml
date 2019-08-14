@@ -31,8 +31,8 @@ spring:
   mail:
     host: smtp.qq.com,smtp.qq.com
     port: 465
-    password: ljY3wql0iRAgGhYFHOJuUU1xgsZwWPxNPT1AHu3GZqvd6EaRiryVRdQ3xVRARSBo
-    username: ynDpYLWBVjc0QIFDdsDKDRYXvDUbtsgCPKZ4FIPSXVGZTSaR05XJV5IQFK+GfvGz
+    password: K9SFBxvrfmAoSI/fXJCISBNrrT+gRSpMC2n1KhUy7zbiPoIRtcwVnfjnPHJvGXnJ
+    username: ABUa1LfUqZ/4ux38pNL+XXhkeSzNkO4Ur5wMmKoclvDWbHvESrAxvT7Wz9lv8ygf
     properties:
       mail:
         smtp:
