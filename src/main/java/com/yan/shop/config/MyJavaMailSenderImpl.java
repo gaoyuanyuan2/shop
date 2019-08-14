@@ -36,7 +36,7 @@ public class MyJavaMailSenderImpl extends JavaMailSenderImpl {
         this.properties = properties;
         if (usernameList == null)
             usernameList = new ArrayList<>();
-        String[] userNames = AesEncryptUtils.decrypt(this.properties.getUsername(), KEY).split(",");
+        String[] userNames =this.properties.getUsername().split(",");
         if (userNames != null) {
             for (String user : userNames) {
                 usernameList.add(user);
@@ -44,7 +44,7 @@ public class MyJavaMailSenderImpl extends JavaMailSenderImpl {
         }
         if (passwordList == null)
             passwordList = new ArrayList<>();
-        String[] passwords = AesEncryptUtils.decrypt(this.properties.getPassword(), KEY).split(",");
+        String[] passwords = this.properties.getPassword().split(",");
         if (passwords != null) {
             for (String pw : passwords) {
                 passwordList.add(pw);
