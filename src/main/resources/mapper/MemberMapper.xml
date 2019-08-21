@@ -86,16 +86,24 @@
     select id, name, label, phone, email, orders_count, orders_total_price, remark, create_by,
     update_by, create_time, update_time
     from member
-
     <where>
       <if test="member.name != null and member.name !=''">
         and name like
-        CONCAT(CONCAT('%', #{gmember.name}), '%')
+        CONCAT(CONCAT('%', #{member.name}), '%')
       </if>
       <if test="member.label != null and member.label !=''">
         and label like
-        CONCAT(CONCAT('%', #{gmember.label}), '%')
+        CONCAT(CONCAT('%', #{member.label}), '%')
+      </if>
+      <if test="member.phone != null and member.phone !=''">
+        and phone like
+        CONCAT(CONCAT('%', #{member.phone}), '%')
+      </if>
+      <if test="member.email != null and member.email !=''">
+        and email like
+        CONCAT(CONCAT('%', #{member.email}), '%')
       </if>
     </where>
+    order by create_time desc
   </select>
 </mapper>
