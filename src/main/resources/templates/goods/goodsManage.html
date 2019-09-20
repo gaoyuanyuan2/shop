@@ -52,6 +52,14 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label" style="width: 150px"> 产品是否制作</label>
+            <div class="layui-input-inline">
+                <select id="haveProduct" style="width: 120px;height: 38px">
+                    <option value="">全部</option>
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                </select>
+            </div>
             <label class="layui-form-label">排序</label>
             <div class="layui-input-inline">
                 <input type="radio" name="sort" value="0" checked>默认
@@ -170,6 +178,16 @@
                 <div class="layui-input-inline">
                     <select name="haveTogether" id="haveTogether2" style="width: 120px;height: 38px">
                         <option value="2">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">产品是否制作</label>
+                <div class="layui-input-inline">
+                    <select name="haveProduct" id="haveProduct2" style="width: 120px;height: 38px">
+                        <option value="0">否</option>
                         <option value="1">是</option>
                     </select>
                 </div>

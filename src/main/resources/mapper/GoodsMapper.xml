@@ -25,6 +25,7 @@
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
         <result column="have_together" property="haveTogether" jdbcType="INTEGER"/>
+        <result column="have_product" property="haveProduct" jdbcType="INTEGER"/>
     </resultMap>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         <!--
@@ -47,7 +48,7 @@
         have_pictrue_evaluation_times, sales_count,
         brush_single_times, brush_single_cost, details_optimization,
         remark, `analyze`, create_by,
-        update_by, create_time, update_time,have_together
+        update_by, create_time, update_time,have_together,have_product
         )
         values (#{startName,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{searchTimes,jdbcType=INTEGER},
         #{keyWord,jdbcType=VARCHAR}, #{haveBrushSingle,jdbcType=INTEGER}, #{evaluationTimes,jdbcType=INTEGER},
@@ -56,7 +57,7 @@
         #{detailsOptimization,jdbcType=INTEGER},
         #{remark,jdbcType=VARCHAR}, #{analyze,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR},
         #{updateBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
-        #{haveTogether,jdbcType=INTEGER}
+        #{haveTogether,jdbcType=INTEGER}, #{haveProduct,jdbcType=INTEGER}
         )
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.yan.shop.entity.Goods">
@@ -77,6 +78,7 @@
         brush_single_times = #{brushSingleTimes,jdbcType=INTEGER},
         brush_single_cost = #{brushSingleCost,jdbcType=DOUBLE},
         details_optimization = #{detailsOptimization,jdbcType=INTEGER},
+        have_product  = #{haveProduct,jdbcType=INTEGER},
         remark = #{remark,jdbcType=VARCHAR},
         `analyze` = #{analyze,jdbcType=VARCHAR},
         update_by = #{updateBy,jdbcType=VARCHAR},
@@ -90,7 +92,7 @@
         -->
         select id, start_name, type, search_times, key_word, have_brush_single, evaluation_times,
         have_pictrue_evaluation_times, sales_count, brush_single_times, brush_single_cost,
-        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together
+        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together,have_product
         from goods
         where id = #{id,jdbcType=BIGINT}
     </select>
@@ -101,14 +103,14 @@
         -->
         select id, start_name, type, search_times, key_word, have_brush_single, evaluation_times,
         have_pictrue_evaluation_times, sales_count, brush_single_times, brush_single_cost,
-        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together
+        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together,have_product
         from goods
     </select>
 
     <select id="selectBy" resultMap="BaseResultMap">
         select id, start_name, type, search_times, key_word, have_brush_single, evaluation_times,
         have_pictrue_evaluation_times, sales_count, brush_single_times, brush_single_cost,
-        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together
+        details_optimization, remark, `analyze`, create_by, update_by, create_time, update_time,have_together,have_product
         from goods
         <where>
             <if test="goods.startName != null and goods.startName !=''">
@@ -123,6 +125,9 @@
             </if>
             <if test="goods.detailsOptimization != null and goods.detailsOptimization !=''">
                 and details_optimization = #{goods.detailsOptimization}
+            </if>
+            <if test="goods.haveProduct != null and goods.haveProduct !=''">
+                and have_product = #{goods.haveProduct}
             </if>
         </where>
         <choose>

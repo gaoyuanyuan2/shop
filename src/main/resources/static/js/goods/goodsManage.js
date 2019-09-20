@@ -42,6 +42,7 @@ $(function () {
                 , {field: 'brushSingleCost', title: '刷单成本', align: 'center', width: 100}
                 , {field: 'detailsOptimization', title: '详情优化', align: 'center', width: 80}
                 , {field: 'haveTogether', title: '聚合', align: 'center', width: 80}
+                , {field: 'haveProduct', title: '产品是否制作', align: 'center', width: 80}
                 , {field: 'createTime', title: '创建时间', align: 'center', width: 180}
                 , {field: 'updateTime', title: '修改时间', align: 'center', width: 180}
 
@@ -112,6 +113,13 @@ $(function () {
                         $(this).text("卫衣")
                     } else if ($(this).text() == '10') {
                         $(this).text("帆布袋")
+                    }
+                });
+                $("[data-field='haveProduct']").children().each(function () {
+                    if ($(this).text() == '1') {
+                        $(this).text("是")
+                    } else if ($(this).text() == '0') {
+                        $(this).text("否")
                     }
                 });
                 pageCurr = curr;
@@ -196,6 +204,7 @@ function edit(data, title) {
         $("#searchTimes").val(data.searchTimes);
         $("#keyWord").val(data.keyWord);
         $("#haveBrushSingle2").val(data.haveBrushSingle);
+        $("#haveProduct2").val(data.haveProduct);
         $("#evaluationTimes").val(data.evaluationTimes);
         $("#havePictrueEvaluationTimes").val(data.havePictrueEvaluationTimes);
         $("#salesCount").val(data.salesCount);
@@ -205,6 +214,7 @@ function edit(data, title) {
         $("#haveTogether2").val(data.haveTogether);
         $("#remark").val(data.remark);
         $("#analyze").val(data.analyze);
+        $("#haveProduct").val(data.haveProduct);
 
         pid = data.permissionIds;
     }
@@ -263,7 +273,8 @@ function search() {
             type: $("#type").val(),
             haveBrushSingle: $("#haveBrushSingle").val(),
             detailsOptimization: $("#detailsOptimization").val(),
-            sort: $('input[name="sort"]:checked').val()
+            sort: $('input[name="sort"]:checked').val(),
+            haveProduct: $("#haveProduct").val()
         }
         , page: {
             curr: 1 //从当前页码开始

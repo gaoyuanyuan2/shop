@@ -17,7 +17,17 @@ public class GoodsListReq {
 
     private Integer detailsOptimization;
 
+    private Integer haveProduct;
+
     private Integer sort;
+
+    public Integer getHaveProduct() {
+        return haveProduct;
+    }
+
+    public void setHaveProduct(Integer haveProduct) {
+        this.haveProduct = haveProduct;
+    }
 
     public String getStartName() {
         return startName;

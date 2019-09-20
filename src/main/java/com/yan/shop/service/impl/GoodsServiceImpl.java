@@ -129,6 +129,7 @@ public class GoodsServiceImpl implements GoodsService {
         goods.setType(req.getType() == null ? 0 : req.getType());
         goods.setHaveBrushSingle(req.getHaveBrushSingle() == null ? 0 : req.getHaveBrushSingle());
         goods.setDetailsOptimization(req.getDetailsOptimization() == null ? 0 : req.getDetailsOptimization());
+        goods.setHaveProduct(req.getHaveProduct());
         return goods;
     }
 }
