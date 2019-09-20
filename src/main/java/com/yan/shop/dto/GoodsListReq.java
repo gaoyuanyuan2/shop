@@ -21,6 +21,26 @@ public class GoodsListReq {
 
     private Integer sort;
 
+    private String remark;
+
+    private String keyWord;
+
+    public String getKeyWord() {
+        return keyWord;
+    }
+
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     public Integer getHaveProduct() {
         return haveProduct;
     }

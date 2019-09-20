@@ -129,6 +129,14 @@
             <if test="goods.haveProduct != null and goods.haveProduct !=''">
                 and have_product = #{goods.haveProduct}
             </if>
+            <if test="goods.remark != null and goods.remark !=''">
+                and remark like
+                CONCAT(CONCAT('%', #{goods.remark}), '%')
+            </if>
+            <if test="goods.keyWord != null and goods.keyWord !=''">
+                and key_word  like
+                CONCAT(CONCAT('%', #{goods.keyWord}), '%')
+            </if>
         </where>
         <choose>
             <when test="sort == 1">order by search_times desc,create_time desc</when>

@@ -130,6 +130,8 @@ public class GoodsServiceImpl implements GoodsService {
         goods.setHaveBrushSingle(req.getHaveBrushSingle() == null ? 0 : req.getHaveBrushSingle());
         goods.setDetailsOptimization(req.getDetailsOptimization() == null ? 0 : req.getDetailsOptimization());
         goods.setHaveProduct(req.getHaveProduct());
+        goods.setRemark(req.getRemark());
+        goods.setKeyWord(req.getKeyWord());
         return goods;
     }
 }

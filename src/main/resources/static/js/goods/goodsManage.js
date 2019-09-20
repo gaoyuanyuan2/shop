@@ -274,7 +274,9 @@ function search() {
             haveBrushSingle: $("#haveBrushSingle").val(),
             detailsOptimization: $("#detailsOptimization").val(),
             sort: $('input[name="sort"]:checked').val(),
-            haveProduct: $("#haveProduct").val()
+            haveProduct: $("#haveProduct").val(),
+            remark: $("#remark2").val(),
+            keyWord: $("#keyWord2").val()
         }
         , page: {
             curr: 1 //从当前页码开始
@@ -287,6 +289,9 @@ function reset() {
     $("#type").val("");
     $("#haveBrushSingle").val("");
     $("#detailsOptimization").val("");
+    $("#remark2").val("");
+    $("#keyWord2").val("");
+    $("#haveProduct").val("");
     $("input[name='sort'][value='0']").attr("checked", true);
 }
 
