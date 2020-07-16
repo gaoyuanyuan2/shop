@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  spring-boot-shop-app:
+    image: spring-boot-shop-app-image
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+       - mysql
+    ports:
+      - 8080:8080
+    volumes:
+      - /data/spring-boot-shop-app
+  mysql:
+    image: mysql:1
+    container_name: mysql
+    build: ./mysql
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+     # - ./mysql/init:/docker-entrypoint-initdb.d/
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - 3306:3306
+    restart: always
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    
