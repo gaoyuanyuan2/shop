@@ -49,4 +49,6 @@ public interface MemberMapper {
     int updateByPrimaryKey(Member record);
 
     List<Member> selectByMember(@Param("member") Member member);
+
+    int updateByEmail(String email);
 }

@@ -31,8 +31,10 @@ public class MailServiceImpl implements MaliService {
         }
         messageHelper.setSubject(subject);
         StringBuilder content = new StringBuilder("<html><head></head><body><h3>");
-        content.append("Hi 开会 2019");
-//        content.append("<li><img src='http://market.cmbchina.com/MPage/online/190808100831478/gsdcyj.png'></li>");
+        content.append("高圆圆2020台历");
+        content.append("<li><img src='https://s2.ax1x.com/2019/11/22/MocE01.png'></li>");
+        content.append("<li><img src='https://s2.ax1x.com/2019/11/22/Mocek6.png'></li>");
+        content.append("<li><img src='https://s2.ax1x.com/2019/11/22/MocVTx.png'></li>");
         content.append("</h3></body></html>");
         messageHelper.setText(content.toString(), true);
         mailSender.send(mailMessage);

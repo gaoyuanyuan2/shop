@@ -6,7 +6,7 @@ server:
     uri-encoding: UTF-8
     max-http-post-size: 0
     accesslog:
-      enabled: true
+      enabled: false
       prefix: access_log
       suffix: .log
       file-date-format: .yyyy-MM-dd
@@ -20,7 +20,7 @@ spring:
       name: shop
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/shop?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://mysql:3306/shop?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
       username: root
       password: 123456
       initial-size: 1
@@ -29,9 +29,10 @@ spring:
       test-on-borrow: true
       driver-class-name: com.mysql.jdbc.Driver
   mail:
-    host: smtp.qq.com,smtp.qq.com
+    host: smtp.163.com
     port: 465
-
+    password: 106981630163222y
+    username: gaoooyuan@163.com
     properties:
       mail:
         smtp:

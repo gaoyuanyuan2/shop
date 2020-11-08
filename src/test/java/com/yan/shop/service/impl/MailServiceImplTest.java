@@ -16,8 +16,6 @@ public class MailServiceImplTest extends BaseTest {
 
     @Test
     public void sendCalendar() throws MessagingException, InterruptedException {
-        for (int i = 0; i < 5; i++) {
-            mailService.sendCalendar("开会2019.8.12", "648433358@qq.com");
-        }
+            mailService.sendCalendar("淘bao搜索高圆圆台历，gou买2020最新台历！", "823789010@qq.com");
     }
 }
